@@ -29,8 +29,26 @@ body {
 
 /* Header with logo, top left */
 .site-header {
-  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--ink);
 }
+
+.admin-link {
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: .4rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+.admin-link:hover,
+.admin-link:focus-visible { border-bottom-color: var(--ink); outline: none; }
 
 .logo-link { display: inline-block; line-height: 0; }
 
@@ -40,7 +58,7 @@ body {
 }
 
 @media (min-width: 720px) {
-  .site-header { padding: 1.75rem 2.5rem; }
+  .site-header { padding: 1.25rem 2.5rem; }
   .logo { height: 52px; }
 }
 
@@ -49,7 +67,7 @@ body {
   width: 100%;
   max-width: 34rem;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 2.5rem;
+  padding: 2.5rem 1.5rem 2.5rem;
 }
 
 h1 {

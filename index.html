@@ -8,11 +8,13 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/style.css">
+  <script src="/visit.js" defer></script>
   <script src="/form.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <a href="/" class="logo-link"><img src="/logo.png" alt="FCS." class="logo" width="146" height="60"></a>
+    <a href="/admin" class="admin-link">Admin Log-In</a>
   </header>
 
   <main class="wrap">
@@ -20,7 +22,7 @@
     <div class="rule"></div>
 
     <section class="intro">
-      <p>Thank you for joining us. Leave your details below and we will tell you about our next gathering.</p>
+      <p>Thank you for joining us. Leave your details below to learn about the next FCS event.</p>
     </section>
 
     <form name="mailing-list" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company" class="signup">
