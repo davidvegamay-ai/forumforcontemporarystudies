@@ -33,10 +33,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid rgba(22, 24, 29, .14);
 }
 
 .admin-link {
+  display: none;
   font-family: var(--sans);
   font-size: .8rem;
   font-weight: 600;
@@ -46,6 +47,8 @@ body {
   padding: .4rem 0;
   border-bottom: 1px solid transparent;
 }
+
+html.is-admin .admin-link { display: inline-block; }
 
 .admin-link:hover,
 .admin-link:focus-visible { border-bottom-color: var(--ink); outline: none; }
