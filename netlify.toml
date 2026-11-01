@@ -17,3 +17,11 @@
   to = "https://forumforcontemporarystudies.org/:splat"
   status = 301
   force = true
+
+# Admin Log-In: the dashboard runs in Google Apps Script and only opens for the
+# Forum's Google account (info@nycfcs.org).
+[[redirects]]
+  from = "/admin"
+  to = "https://script.google.com/a/macros/nycfcs.org/s/AKfycbzLQ6FX5M7RDHRkV0EShEu1wGOyAFHNBsuIn7K1Bq2ZnoGgK5oGZHcJEjlqA4eYgIAMNg/exec"
+  status = 302
+  force = true
