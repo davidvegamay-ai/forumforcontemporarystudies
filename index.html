@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forum for Contemporary Studies</title>
   <meta name="description" content="The Forum for Contemporary Studies. Join our mailing list to hear about future events.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/style.css">
+  <script src="/form.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <a href="/" class="logo-link"><img src="/logo.png" alt="FCS." class="logo" width="146" height="60"></a>
+  </header>
+
   <main class="wrap">
-    <header>
-      <p class="eyebrow">A 501(c)(3) nonprofit</p>
-      <h1>Forum for<br>Contemporary Studies</h1>
-      <div class="rule"></div>
-    </header>
+    <h1>Forum for<br>Contemporary Studies</h1>
+    <div class="rule"></div>
 
     <section class="intro">
       <p>Thank you for joining us. Leave your details below and we will tell you about our next gathering.</p>
@@ -25,18 +29,29 @@
         <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label>
       </p>
 
-      <label for="name">Full name</label>
-      <input id="name" name="name" type="text" autocomplete="name" required maxlength="120">
+      <div class="field">
+        <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+        <input id="name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="name-error">
+        <p class="error" id="name-error" aria-live="polite"></p>
+      </div>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+      <div class="field">
+        <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" aria-describedby="email-error">
+        <p class="error" id="email-error" aria-live="polite"></p>
+      </div>
 
-      <label for="phone">Phone <span class="opt">(optional)</span></label>
-      <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="[0-9+()\-.\s]{7,30}">
+      <div class="field">
+        <label for="phone">Phone <span class="opt">(optional)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="phone-error">
+        <p class="error" id="phone-error" aria-live="polite"></p>
+      </div>
+
+      <p class="form-alert" id="form-alert" role="alert"></p>
 
       <button type="submit">Join the mailing list</button>
 
-      <p class="fine">We use your details only to contact you about Forum events. We never sell or share them. You can unsubscribe at any time.</p>
+      <p class="fine"><span class="req">*</span> Required. We use your details only to contact you about Forum events. We never sell or share them. You can unsubscribe at any time.</p>
     </form>
   </main>
 
