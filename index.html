@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forum for Contemporary Studies</title>
+  <meta name="description" content="The Forum for Contemporary Studies. Join our mailing list to hear about future events.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">A 501(c)(3) nonprofit</p>
+      <h1>Forum for<br>Contemporary Studies</h1>
+      <div class="rule"></div>
+    </header>
+
+    <section class="intro">
+      <p>Thank you for joining us. Leave your details below and we will tell you about our next gathering.</p>
+    </section>
+
+    <form name="mailing-list" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company" class="signup">
+      <input type="hidden" name="form-name" value="mailing-list">
+      <p class="hp" aria-hidden="true">
+        <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label>
+      </p>
+
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required maxlength="120">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+
+      <label for="phone">Phone <span class="opt">(optional)</span></label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="[0-9+()\-.\s]{7,30}">
+
+      <button type="submit">Join the mailing list</button>
+
+      <p class="fine">We use your details only to contact you about Forum events. We never sell or share them. You can unsubscribe at any time.</p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Forum for Contemporary Studies</p>
+  </footer>
+</body>
+</html>
