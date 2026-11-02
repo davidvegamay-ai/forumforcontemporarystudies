@@ -1,9 +1,6 @@
-/* Fonts: Inter Bold matches the FCS logo for headings; Times New Roman for all other text.
-   Tinos is a free font with Times New Roman's measurements, used where Times isn't installed (Android). */
+/* Fonts: Inter Bold matches the FCS logo for headings and tabs; the serif stack below for all other text. */
 @font-face { font-family: "FCS Display"; font-weight: 600; font-display: swap; src: url(/fonts/inter-latin-600-normal.woff2) format("woff2"); }
 @font-face { font-family: "FCS Display"; font-weight: 700; font-display: swap; src: url(/fonts/inter-latin-700-normal.woff2) format("woff2"); }
-@font-face { font-family: "Tinos"; font-weight: 400; font-display: swap; src: url(/fonts/tinos-latin-400-normal.woff2) format("woff2"); }
-@font-face { font-family: "Tinos"; font-weight: 700; font-display: swap; src: url(/fonts/tinos-latin-700-normal.woff2) format("woff2"); }
 
 :root {
   --ink: #16181d;
@@ -14,7 +11,7 @@
   --go: #1e7a4a;
   --go-dark: #155c37;
   --error: #b42318;
-  --serif: "Times New Roman", Times, Tinos, serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --display: "FCS Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -96,7 +93,7 @@ html.is-admin .admin-link { display: inline-block; }
 .wrap {
   flex: 1;
   width: 100%;
-  max-width: 34rem;
+  max-width: 40rem;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 2.5rem;
 }
@@ -199,7 +196,7 @@ input.invalid:focus { box-shadow: 0 0 0 3px rgba(180, 35, 24, .15); }
 button {
   margin-top: 1.5rem;
   padding: 1rem;
-  font: 600 1rem var(--display);
+  font: 700 1.05rem var(--serif);
   letter-spacing: .01em;
   color: #fff;
   background: var(--ink);
@@ -276,7 +273,6 @@ footer p { margin: 0; text-align: right; }
 
 
 /* Events */
-.wrap-wide { max-width: 44rem; }
 
 .section-label {
   margin: 0 0 .9rem;
@@ -332,7 +328,7 @@ footer p { margin: 0; text-align: right; }
 .btn {
   display: inline-block;
   padding: .8rem 1.4rem;
-  font: 600 .95rem var(--display);
+  font: 700 1rem var(--serif);
   color: #fff !important;
   background: var(--ink) !important;
   border: 0;
@@ -345,9 +341,9 @@ footer p { margin: 0; text-align: right; }
 
 .event-more summary {
   cursor: pointer;
-  font-family: var(--display);
-  font-size: .88rem;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--ink);
   list-style: none;
 }
