@@ -209,3 +209,23 @@ footer {
 }
 
 footer p { margin: 0; }
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  padding: .35rem 0;
+}
+
+.social a:hover span,
+.social a:focus-visible span { text-decoration: underline; }
