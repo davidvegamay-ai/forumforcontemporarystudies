@@ -9,7 +9,7 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://script.google.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://embed.lu.ma; style-src 'self' 'unsafe-inline' https://embed.lu.ma; img-src 'self' data: https:; font-src 'self' https://embed.lu.ma https://*.lu.ma https://*.luma.com; connect-src 'self' https://script.google.com https://*.lu.ma https://*.luma.com https://luma.com; frame-src https://luma.com https://*.luma.com https://lu.ma https://*.lu.ma; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
 
 # Send www to the bare domain so the QR code and links all land on one address
 [[redirects]]
