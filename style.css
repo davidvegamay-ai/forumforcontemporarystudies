@@ -332,7 +332,7 @@ footer p { margin: 0; text-align: right; }
   color: #fff !important;
   background: var(--ink) !important;
   border: 0;
-  border-radius: 6px;
+  border-radius: 6px !important;
   text-decoration: none;
   transition: background-color .15s ease;
 }

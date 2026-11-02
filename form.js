@@ -19,8 +19,8 @@
     var v = fields[key].el.value.trim();
     if (key === 'name' && !v) return 'Please enter your full name.';
     if (key === 'email' && !v) return 'Please enter your email address.';
-    if (key === 'email' && !emailRe.test(v)) return 'Please enter a valid email address, like name@example.com.';
-    if (key === 'phone' && v && !phoneRe.test(v)) return 'Please enter a valid phone number, or leave it blank.';
+    if (key === 'email' && !emailRe.test(v)) return 'Please enter a valid email address.';
+    if (key === 'phone' && v && !phoneRe.test(v)) return 'Please enter a valid phone number.';
     return '';
   }
 
