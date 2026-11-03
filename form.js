@@ -59,8 +59,28 @@
 
     alertBox.textContent = '';
     alertBox.classList.remove('show');
+    sendToSheet();
     form.querySelector('button[type=submit]').classList.add('sent');
   });
+
+  // Send the signup straight to the Forum's Google Sheet. Netlify still keeps
+  // its own copy of every submission as a backup. sendBeacon finishes even
+  // after the browser moves on to the thank-you page.
+  function sendToSheet() {
+    try {
+      if (form.querySelector('[name=company]') && form.querySelector('[name=company]').value) return;
+      var endpoint = 'https://script.google.com/macros/s/AKfycbzHE8GvxoKe8CTbUEjrxcqwuijy74eEDrT0aD4l2887J1kCUVgbQgWBxV22x-cB0qd8rg/exec?token=gqL5kYjFWJjnWjKZrb16yloa8znqIq2D';
+      var payload = JSON.stringify({
+        data: {
+          name: fields.name.el.value.trim(),
+          email: fields.email.el.value.trim(),
+          phone: fields.phone.el.value.trim()
+        }
+      });
+      if (navigator.sendBeacon && navigator.sendBeacon(endpoint, new Blob([payload], { type: 'text/plain' }))) return;
+      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload, keepalive: true });
+    } catch (e) {}
+  }
 
   // Clear a field's error as soon as the person fixes it.
   Object.keys(fields).forEach(function (key) {
