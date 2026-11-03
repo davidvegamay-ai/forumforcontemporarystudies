@@ -59,16 +59,39 @@
 
     alertBox.textContent = '';
     alertBox.classList.remove('show');
-    sendToSheet();
-    form.querySelector('button[type=submit]').classList.add('sent');
+    var button = form.querySelector('button[type=submit]');
+    button.classList.add('sent');
+
+    // Without fetch, let the browser post the form to Netlify the usual way.
+    if (!window.fetch || !window.Promise) return;
+
+    // Send the signup to both places and wait for them before showing the
+    // thank-you page, so a phone can't drop the request mid-navigation.
+    e.preventDefault();
+    button.disabled = true;
+    var done = false;
+    function finish(ok) {
+      if (done) return;
+      done = true;
+      if (ok) window.location.href = '/thanks/';
+      else HTMLFormElement.prototype.submit.call(form);
+    }
+    var toNetlify = fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (r) { return r.ok; }, function () { return false; });
+    var toSheet = sendToSheet();
+    Promise.all([toNetlify, toSheet]).then(function (results) { finish(results[0]); });
+    setTimeout(function () { finish(true); }, 6000);
   });
 
-  // Send the signup straight to the Forum's Google Sheet. Netlify still keeps
-  // its own copy of every submission as a backup. sendBeacon finishes even
-  // after the browser moves on to the thank-you page.
+  // Send the signup straight to the Forum's Google Sheet. Netlify also keeps
+  // its own copy of every submission as a backup. Resolves once the request
+  // has gone out (Google's reply can't be read here, and isn't needed).
   function sendToSheet() {
     try {
-      if (form.querySelector('[name=company]') && form.querySelector('[name=company]').value) return;
+      if (form.querySelector('[name=company]') && form.querySelector('[name=company]').value) return Promise.resolve();
       var endpoint = 'https://script.google.com/macros/s/AKfycbzHE8GvxoKe8CTbUEjrxcqwuijy74eEDrT0aD4l2887J1kCUVgbQgWBxV22x-cB0qd8rg/exec?token=gqL5kYjFWJjnWjKZrb16yloa8znqIq2D';
       var payload = JSON.stringify({
         data: {
@@ -77,9 +100,11 @@
           phone: fields.phone.el.value.trim()
         }
       });
-      if (navigator.sendBeacon && navigator.sendBeacon(endpoint, new Blob([payload], { type: 'text/plain' }))) return;
-      fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload, keepalive: true });
-    } catch (e) {}
+      return fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload, keepalive: true })
+        .then(function () {}, function () {});
+    } catch (err) {
+      return Promise.resolve();
+    }
   }
 
   // Clear a field's error as soon as the person fixes it.
